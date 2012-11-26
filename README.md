@@ -23,6 +23,11 @@ Or, if you're using [south](http://pypi.python.org/pypi/South/):
 
 	python manage.py migrate pelican_admin
 	
+Now, you must tell pelican_admin what's the path to you pelican blog. In your settings.py you must add:
+
+	PELICAN_PATH = '/path/to/your/blog'
+	PELICAN_SETTINGS = 'your_pelican_settings.py # Optional. The default value is 'pelicanconf.py'
+	
 Make sure your pelican service is running in `autoreload` mode:
 
 	pelican /path/to/your/blog -s /path/to/pelican/settings -r &
