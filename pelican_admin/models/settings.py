@@ -5,6 +5,8 @@ from django.conf import settings
 
 import os, sys, pprint
 
+from pelican_admin import get_pelican_settings
+
 class Settings(models.Model):
 
     name = models.CharField(max_length=32, unique=True, primary_key=True)
@@ -14,7 +16,7 @@ class Settings(models.Model):
     def save(self, **kwargs):
         super(Settings, self).save(**kwargs)
 
-        pelican_settings_name = getattr(settings, 'PELICAN_SETTINGS', 'pelicanconf')
+        pelican_settings_name = get_pelican_settings()
         f = open(os.path.join(settings.PELICAN_PATH, pelican_settings_name+'.py'), 'w')
 
         f.write('#coding: utf-8\n\n')
@@ -28,7 +30,7 @@ class Settings(models.Model):
 
     @classmethod
     def load_from_path(cls):
-        pelican_settings_name = getattr(settings, 'PELICAN_SETTINGS', 'pelicanconf')
+        pelican_settings_name = get_pelican_settings()
 
         sys.path.append(settings.PELICAN_PATH)
         pelican_settings = None

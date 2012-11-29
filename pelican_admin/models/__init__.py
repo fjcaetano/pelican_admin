@@ -1,6 +1,6 @@
 __author__ = 'Flavio'
 
-from settings import Settings
-from blog_post import BlogPost
+from pelican_admin.models.settings import Settings
+from pelican_admin.models.blog_post import BlogPost
 
 __all__ = ['Settings', 'BlogPost']

@@ -1,0 +1,23 @@
+{% load i18n %}
+<script type="text/javascript" src="{{ STATIC_URL }}pelican_admin/main.js"></script>
+<script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
+
+<div id="module_{{ module.id }}" class="{{ module.render_css_classes }}">
+    {% if module.show_title %}<h2>{{ module.title }}</h2>{% endif %}
+    <div class="dashboard-module-content">
+        {% spaceless %}
+            <ul>
+                <li class="odd">
+                     {{ _("Status") }}: <span id="pelican_status" style="font-weight: bold; color: {{ module.pelican_status|yesno:"green,red" }};">{{ module.pelican_status|yesno:_("Running,Stopped") }}</span>
+
+                    <ul>
+                        <li>
+                            <input id="pelican_admin" type="button" status="{{ module.pelican_status|yesno:"1,0" }}" value="{{ module.pelican_status|yesno:_("Stop,Start")|add:" "|add:_("Service") }}" />
+                            <img id="pelican_loading" src="{{ STATIC_URL }}pelican_admin/loading.gif" alt="{{ _("Loading") }}" style="display: none; margin-right: 20px;" />
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        {% endspaceless %}
+    </div>
+</div>

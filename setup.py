@@ -16,6 +16,7 @@ setup(
     long_description=open('PYREADME.md').read(),
     install_requires=[
         "Django >= 1.4",
+        "psutil >= 0.6.1"
     ],
     include_package_data=True,
     classifiers=[
