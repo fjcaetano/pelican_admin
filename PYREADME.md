@@ -67,11 +67,11 @@ The Looks
 
 This is how *pelican_admin*'s module for `django-admin-tools <https://bitbucket.org/izi/django-admin-tools/wiki/Home>`_ looks like when enabled::
 
-.. image::https://raw.github.com/fjcaetano/pelican_admin/master/ss1.png
+.. image:: https://raw.github.com/fjcaetano/pelican_admin/master/ss1.png
 
-.. image::https://raw.github.com/fjcaetano/pelican_admin/master/ss2.png
+.. image:: https://raw.github.com/fjcaetano/pelican_admin/master/ss2.png
 
-.. image::https://raw.github.com/fjcaetano/pelican_admin/master/ss3.png
+.. image:: https://raw.github.com/fjcaetano/pelican_admin/master/ss3.png
 
 
 Features

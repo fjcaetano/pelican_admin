@@ -100,7 +100,7 @@ Or you can clone the project and install it via:
 Check This Out
 --------------
 1. [GitHub Repository](https://github.com/fjcaetano/pelican_admin)
-2. [PyPi package](http://pypi.python.org/pypi/pelican_admin/0.1)
+2. [PyPi package](http://pypi.python.org/pypi/pelican_admin/0.2)
 3. [Owner's website](http://flaviocaetano.com)
 4. [Owner's Blog](http://blog.flaviocaetano.com)
 

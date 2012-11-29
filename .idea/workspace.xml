@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77823e59-3e9a-41d7-ae6c-7548f6e33062" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ss1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ss2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ss3.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGES.txt" afterPath="$PROJECT_DIR$/CHANGES.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MANIFEST.in" afterPath="$PROJECT_DIR$/MANIFEST.in" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PYREADME.md" afterPath="$PROJECT_DIR$/PYREADME.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pelican_admin/__init__.py" afterPath="$PROJECT_DIR$/pelican_admin/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pelican_admin/admin/__init__.py" afterPath="$PROJECT_DIR$/pelican_admin/admin/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pelican_admin/models/__init__.py" afterPath="$PROJECT_DIR$/pelican_admin/models/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pelican_admin/models/settings.py" afterPath="$PROJECT_DIR$/pelican_admin/models/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="pelican_admin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,7 +37,7 @@
       <file leaf-file-name="setup.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="42" selection-start="699" selection-end="699" vertical-scroll-proportion="0.3868132">
+            <state line="25" column="42" selection-start="742" selection-end="742" vertical-scroll-proportion="0.4043956">
               <folding />
             </state>
           </provider>
@@ -56,17 +47,6 @@
         <entry file="file://$PROJECT_DIR$/pelican_admin/modules.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="27" column="23" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#30#85#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="output.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="36" selection-start="1040" selection-end="1040" vertical-scroll-proportion="-16.64">
               <folding />
             </state>
           </provider>
@@ -84,10 +64,8 @@
       <file leaf-file-name="pelican_admin.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pelican_admin/templates/pelican_admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="16" selection-start="422" selection-end="422" vertical-scroll-proportion="-5.12">
-              <folding>
-                <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="8" column="16" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,11 +85,12 @@
       <list>
         <option value="$PROJECT_DIR$/pelican_admin/templates/pelican_admin.html" />
         <option value="$PROJECT_DIR$/pelican_admin/modules.py" />
-        <option value="$PROJECT_DIR$/PYREADME.md" />
         <option value="$PROJECT_DIR$/pelican_admin/__init__.py" />
         <option value="$PROJECT_DIR$/CHANGES.txt" />
         <option value="$PROJECT_DIR$/MANIFEST.in" />
         <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/PYREADME.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -188,8 +167,8 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="options.lastSelected" value="web.server" />
     <property name="last_opened_file_path" value="/www" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -224,7 +203,7 @@
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -242,14 +221,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1058" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2524013" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25506938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -347,46 +326,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pelican_admin/templates/pelican_admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="16" selection-start="422" selection-end="422" vertical-scroll-proportion="-5.12">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="36" selection-start="1040" selection-end="1040" vertical-scroll-proportion="-16.64">
+        <state line="8" column="16" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pelican_admin/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="16" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.61538464">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PYREADME.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1426" selection-end="1426" vertical-scroll-proportion="0.5005574">
-          <folding />
-        </state>
+        <state line="41" column="16" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.61538464" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pelican_admin/modules.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="23" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#30#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="9" selection-start="1968" selection-end="1968" vertical-scroll-proportion="0.47472528">
           <folding />
         </state>
       </provider>
@@ -426,9 +378,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PYREADME.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="48" selection-start="3458" selection-end="3458" vertical-scroll-proportion="0.78595316">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="0" selection-start="2916" selection-end="2916" vertical-scroll-proportion="0.50769234">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="42" selection-start="699" selection-end="699" vertical-scroll-proportion="0.3868132">
+        <state line="25" column="42" selection-start="742" selection-end="742" vertical-scroll-proportion="0.4043956">
           <folding />
         </state>
       </provider>
