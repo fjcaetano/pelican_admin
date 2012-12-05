@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 12:44-0200\n"
+"POT-Creation-Date: 2012-12-05 18:33-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-
-#: modules.py:12 modules.py:32 pelican_admin/modules.py:12
-msgid "Pelican Admin"
-msgstr ""
 
 #: pelican_admin/templates/pelican_admin.html:11
 msgid "Status"
@@ -36,4 +32,32 @@ msgstr ""
 
 #: pelican_admin/templates/pelican_admin.html:15
 msgid "Service"
+msgstr ""
+
+#: pelican_admin/templates/pelican_admin.html:16
+msgid "Loading"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:17
+msgid "Save"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:18
+msgid "Delete"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:19
+msgid "Save as new"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:20
+msgid "Save and add another"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:21
+msgid "Save and continue editing"
+msgstr ""
+
+#: pelican_admin/templates/admin/submit_line.html:22
+msgid "View Draft"
 msgstr ""

@@ -3,6 +3,8 @@ __author__ = 'Flavio'
 from django.db import models
 from django.conf import settings
 
+from pelican.utils import slugify
+
 import os, datetime
 
 MARKUPS = (
@@ -20,13 +22,20 @@ class BlogPost(models.Model):
     file_path = models.CharField(max_length=255, unique=True, primary_key=True)
 
     def save(self, **kwargs):
+        self.write()
+
         super(BlogPost, self).save(**kwargs)
+
+    def write(self):
+        if not self.file_path:
+            filename ='%s.%s' % (slugify(self.title), MARKUPS[self.markup][1])
+            self.file_path = os.path.join(settings.PELICAN_PATH, 'content', filename)
 
         f = open(self.file_path, 'w')
 
         f.write('%s: %s\n' % (self.metafy('title'), self.title))
         f.write('%s: %s\n' % (self.metafy('date'), self.date.strftime('%Y-%m-%d %H:%M')))
-        f.write(self.text)
+        f.write(self.text.encode('utf-8'))
 
         f.close()
 
