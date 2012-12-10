@@ -1,50 +1,30 @@
 __author__ = 'flaviocaetano'
 
-from django.conf import settings
 from django.contrib.admin import site
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 
-import psutil, os, signal, time, urlparse, pprint
+import os, time
 
-from pelican_admin import get_pelican_settings
-from pelican_admin.models import BlogPost, Settings
+from pelican_admin import _kill_pelican_service, _start_pelican_service, _check_pelican_service
+from pelican_admin.models import BlogPost
 from pelican_admin.admin.blog_post_admin import BlogPostAdmin
-
-from pelican.utils import slugify
 
 @csrf_exempt
 def service_action(request):
     status = int(request.GET['status']) != 0
     callback = request.GET['callback']
 
-    # Stop pelican Services
-    for p in psutil.process_iter():
-        try:
-            if "pelican" in str(p.cmdline).lower():
-                os.kill(p.pid, signal.SIGKILL)
-        except psutil.AccessDenied, e:
-            pass
+    # Stop pelican services
+    _kill_pelican_service()
 
     if not status:
         # Start pelican
-        pelican_settings_name = get_pelican_settings()
-        pelican = getattr(settings, 'PELICAN_BIN', '/usr/local/bin/pelican')
-
-        cmdline = pelican+' -s %s.py -r &' % pelican_settings_name
-        os.chdir(settings.PELICAN_PATH)
-        os.system(cmdline)
+        _start_pelican_service()
 
     time.sleep(2)
 
-    new_status = 0
-    for p in psutil.process_iter():
-        try:
-            if "pelican" in str(p.cmdline).lower():
-                new_status = 1
-                break
-        except psutil.AccessDenied, e:
-            pass
+    new_status = int(_check_pelican_service())
 
     return HttpResponse('%s(%s)' % (callback, new_status))
 
@@ -55,23 +35,29 @@ def view_draft(request):
 
     form.is_valid()
 
-    blog_post = BlogPost()
+    remove_later = False
 
-    blog_post.title = form.cleaned_data.get('title')
-    blog_post.markup = form.cleaned_data.get('markup')
-    blog_post.text = form.cleaned_data.get('text')
-    blog_post.date = form.cleaned_data.get('date')
-    blog_post.file_path = form.cleaned_data.get('file_path')
+    try:
+        blog_post = BlogPost.get_from_meta(
+            markup=form.cleaned_data.get('markup'),
+            title=form.cleaned_data.get('title'),
+            slug=form.cleaned_data.get('slug'))
+    except BlogPost.DoesNotExist:
+        remove_later = True
+        blog_post = BlogPost()
 
-    blog_post.text = '%s: draft\n%s' % (blog_post.metafy('status'), blog_post.text)
+    for key in form.cleaned_data.keys():
+        setattr(blog_post, key, form.cleaned_data.get(key))
 
+    blog_post.status = 'draft'
     blog_post.write()
 
-    site_url = Settings.objects.get(name='SITEURL')
-    site_url = site_url.value.replace("'", '')
+    time.sleep(2)
 
-#    return HttpResponseRedirect(urlparse.urljoin(site_url, 'drafts/%s.html' % slugify(blog_post.title)))
-    return HttpResponseRedirect('/pelican_blog/drafts/%s.html' % slugify(blog_post.title))
+    if remove_later:
+        os.remove(blog_post.file_path)
+
+    return HttpResponseRedirect('/pelican_blog/drafts/%s.html' % blog_post.get_slug())
 
 ### URLS
 

@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-05 18:33-0200\n"
+"POT-Creation-Date: 2012-12-10 10:17-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +17,136 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
+#: actions.py:48
+#, python-format
+msgid "Successfully deleted %(count)d %(items)s."
+msgstr ""
+
+#: actions.py:60
+#, python-format
+msgid "Cannot delete %(name)s"
+msgstr ""
+
+#: actions.py:62
+msgid "Are you sure?"
+msgstr ""
+
+#: actions.py:84
+#, python-format
+msgid "Delete selected %(verbose_name_plural)s"
+msgstr ""
+
+#: dashboard.py:33 menu.py:37
+msgid "Applications"
+msgstr ""
+
+#: dashboard.py:39 menu.py:41
+msgid "Administration"
+msgstr ""
+
+#: dashboard.py:44 dashboard.py:86
+msgid "Recent Actions"
+msgstr ""
+
+#: menu.py:34
+msgid "Dashboard"
+msgstr ""
+
+#: books/admin/friend.py:30
+msgid "(None)"
+msgstr ""
+
+#: pelican_admin/admin/blog_post_admin.py:13
+msgid "Extra Info"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:19
+msgid "Published"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:20
+msgid "Draft"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:21
+msgid "Hidden"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:31
+msgid "Title"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:32
+msgid "Markup"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:37
+msgid "Text"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:38
+msgid "Date"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:39
+msgid "Tags"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:40
+msgid "Slug"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:41
+msgid "Author"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:42
+msgid "Summary"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:43
+msgid "Language"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:44
 #: pelican_admin/templates/pelican_admin.html:11
 msgid "Status"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:46
+msgid "File Path"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:162
+msgid "Blog Post"
+msgstr ""
+
+#: pelican_admin/models/blog_post.py:163
+msgid "Blog Posts"
+msgstr ""
+
+#: pelican_admin/models/category.py:7 pelican_admin/models/settings.py:16
+msgid "Name"
+msgstr ""
+
+#: pelican_admin/models/category.py:16
+msgid "Category"
+msgstr ""
+
+#: pelican_admin/models/category.py:17
+msgid "Categories"
+msgstr ""
+
+#: pelican_admin/models/settings.py:18
+msgid "Value"
+msgstr ""
+
+#: pelican_admin/models/settings.py:83
+msgid "Setting"
+msgstr ""
+
+#: pelican_admin/models/settings.py:84
+msgid "Settings"
 msgstr ""
 
 #: pelican_admin/templates/pelican_admin.html:11
@@ -60,4 +187,9 @@ msgstr ""
 
 #: pelican_admin/templates/admin/submit_line.html:22
 msgid "View Draft"
+msgstr ""
+
+#: templates/filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
 msgstr ""

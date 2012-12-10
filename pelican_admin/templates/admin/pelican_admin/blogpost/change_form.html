@@ -1,0 +1,39 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <script type="text/javascript">
+        function undo_changes()
+        {
+            var form = $('#blogpost_form');
+            form.removeAttr('target')
+            form.attr('action', "")
+        }
+
+        function view_draft()
+        {
+            var form = $('#blogpost_form');
+            form.attr('target', '_blank')
+            form.attr('action', '/pelican_admin/view_draft')
+
+            setTimeout('undo_changes();', 1000)
+        }
+    </script>
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+    <div class="submit-row">
+        <input type="submit" value="{% trans 'Save' %}" class="default" name="_save" {{ onclick_attrib }}/>
+        {% if not is_popup and has_delete_permission %}
+            {% if change or show_delete %}<p class="deletelink-box"><a href="delete/" class="deletelink">{% trans "Delete" %}</a></p>{% endif %}
+        {% endif %}
+        {% if not is_popup and change and save_as %}<input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew" {{ onclick_attrib }}/>{%endif%}
+        {% if has_add_permission and not is_popup %}
+            {% if not save_as or add %}<input type="submit" value="{% trans 'Save and add another' %}" name="_addanother" {{ onclick_attrib }} />{% endif %}
+        {% endif %}
+        {% if not is_popup and has_change_permission %}<input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue" {{ onclick_attrib }}/>{% endif %}
+        <input type="submit" value="{% trans 'View Draft' %}" name="_draft" class="default" onclick="view_draft();"/>
+    </div>
+{% endblock %}

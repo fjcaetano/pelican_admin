@@ -16,13 +16,14 @@ setup(
     long_description=open('PYREADME.md').read(),
     install_requires=[
         "Django >= 1.4",
-        "psutil >= 0.6.1"
+        "psutil >= 0.6.1",
+        "pelican >= 3.0"
     ],
     include_package_data=True,
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content'
     ],

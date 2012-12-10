@@ -2,37 +2,49 @@ __author__ = 'Flavio'
 
 from django.db import models
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
+from django.utils import simplejson
 
-import os, sys, pprint
+import os, sys, pprint, unicodedata, ast
 
-from pelican_admin import get_pelican_settings
+from pelican_admin.helper import get_pelican_settings_file
 
 from pelican import settings as ps
 
 class Settings(models.Model):
+    name = models.CharField(_('Name'), max_length=32, unique=True, primary_key=True)
 
-    name = models.CharField(max_length=32, unique=True, primary_key=True)
-
-    value = models.TextField()
+    value = models.TextField(_('Value'), blank=True, default='')
 
     def save(self, **kwargs):
         super(Settings, self).save(**kwargs)
 
-        pelican_settings_name = get_pelican_settings()
-        f = open(os.path.join(settings.PELICAN_PATH, pelican_settings_name+'.py'), 'w')
+        self.write()
+
+    def write(self):
+        pelican_settings_name = get_pelican_settings_file()
+        f = open(os.path.join(settings.PELICAN_PATH, pelican_settings_name+'.py'), 'w+')
 
         f.write('#coding: utf-8\n\n')
 
         all_objs = Settings.objects.all()
 
         for set in all_objs:
-            f.write('%s = %s\n' % (set.name, set.value))
+            value = set.value
+            try:
+                value = ast.literal_eval(value)
+            except Exception:
+                value = simplejson.dumps(value)
+
+            f.write('%s = %s\n' % (set.name, value))
 
         f.close()
 
     @classmethod
     def load_from_path(cls):
-        pelican_settings_name = get_pelican_settings()
+        Settings.objects.all().delete()
+
+        pelican_settings_name = get_pelican_settings_file()
 
         sys.path.append(settings.PELICAN_PATH)
         pelican_settings = None
@@ -44,16 +56,27 @@ class Settings(models.Model):
 
         default = dict(ps._DEFAULT_CONFIG.items() + user_settings.items())
 
+        settings_list = []
+
         for attr, def_value in default.items():
-            attr_value = pprint.pformat(def_value)
+            if isinstance(def_value, str):
+                attr_value = def_value
+            elif isinstance(def_value, unicode):
+                attr_value = unicodedata.normalize('NFKD', def_value).encode('ascii', 'ignore')
+            else:
+                attr_value = pprint.pformat(def_value)
 
             set = Settings(name=attr, value=attr_value)
-            set.save()
+            settings_list.append(set)
+
+        Settings.objects.bulk_create(settings_list)
 
     def __unicode__(self):
         return unicode(self.name)
 
     class Meta:
-        verbose_name_plural = 'Settings'
+        verbose_name = _('Setting')
+        verbose_name_plural = _('Settings')
+
         ordering = ['name']
         app_label = 'pelican_admin'

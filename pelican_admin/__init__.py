@@ -1,23 +1,12 @@
 __author__ = 'flaviocaetano'
 
-__VERSION__ = 0.2
+__VERSION__ = 0.3
 
 from django.conf import settings, urls
 
-import django, os
+from pelican_admin.helper import get_pelican_settings_file
 
-try:
-    from pelican_admin.models import Settings, BlogPost
-
-    if settings.PELICAN_PATH:
-        settings.LOCALE_PATHS.append('pelican_admin.locale')
-
-        Settings.load_from_path()
-        BlogPost.load_posts()
-except ImportError, e:
-    pass
-except django.db.utils.DatabaseError, e:
-    pass
+import django, os, psutil, signal, atexit
 
 def pelican_urls():
     """Helper function to return a URL pattern for serving pelican_admin webservices.
@@ -29,5 +18,51 @@ def pelican_urls():
         urls.url(r'^pelican_blog/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PELICAN_PATH, 'output')}),
     )
 
-def get_pelican_settings():
-    return getattr(settings, 'PELICAN_SETTINGS', 'pelicanconf')
+def _kill_pelican_service():
+    print 'Killing pelican services'
+
+    for p in psutil.process_iter():
+        try:
+            if "pelican" in str(p.cmdline).lower():
+                os.kill(p.pid, signal.SIGKILL)
+        except psutil.AccessDenied, e:
+            pass
+
+def _start_pelican_service():
+    pelican_settings_name = get_pelican_settings_file()
+    pelican = getattr(settings, 'PELICAN_BIN', '/usr/local/bin/pelican')
+
+    cmdline = pelican+' -s %s.py -r &' % pelican_settings_name
+    os.chdir(settings.PELICAN_PATH)
+    os.system(cmdline)
+
+def _check_pelican_service():
+    status = False
+    for p in psutil.process_iter():
+        try:
+            if "pelican" in str(p.cmdline).lower():
+                status = True
+                break
+        except psutil.AccessDenied, e:
+            pass
+
+    return status
+
+
+# Beginning
+try:
+    from pelican_admin.models import Settings, BlogPost
+
+    if settings.PELICAN_PATH:
+        settings.LOCALE_PATHS = settings.LOCALE_PATHS + ('pelican_admin.locale',)
+        settings.INSTALLED_APPs = settings.INSTALLED_APPS + ('djangotoolbox',)
+
+        Settings.load_from_path()
+        BlogPost.load_posts()
+
+        _start_pelican_service()
+        atexit.register(_kill_pelican_service)
+except ImportError, e:
+    print e
+except django.db.utils.DatabaseError, e:
+    print e
