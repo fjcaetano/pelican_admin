@@ -1,5 +1,4 @@
 __author__ = 'flaviocaetano'
-
 __VERSION__ = 0.3
 
 from django.conf import settings, urls
@@ -14,7 +13,7 @@ def pelican_urls():
 
     return (
         urls.url(r'^pelican_admin/', urls.include('pelican_admin.urls')),
-        urls.url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': 'pelican_admin'}),
+        urls.url(r'^admin/jsi18n.js$', 'django.views.i18n.javascript_catalog', {'packages': 'pelican_admin'}),
         urls.url(r'^pelican_blog/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PELICAN_PATH, 'output')}),
     )
 
