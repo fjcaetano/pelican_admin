@@ -57,7 +57,7 @@ def view_draft(request):
     if remove_later:
         os.remove(blog_post.file_path)
 
-    return HttpResponseRedirect('/pelican_blog/drafts/%s.html' % blog_post.get_slug())
+    return HttpResponseRedirect('/admin/pelican_blog/drafts/%s.html' % blog_post.get_slug())
 
 ### URLS
 
