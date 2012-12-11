@@ -15,9 +15,9 @@ setup(
     description='Django admin app for Pelican blogs.',
     long_description=open('PYREADME.md').read(),
     install_requires=[
-        "Django >= 1.4",
         "psutil >= 0.6.1",
-        "pelican >= 3.0"
+        "Django >= 1.4",
+        "pelican >= 3.0",
     ],
     include_package_data=True,
     classifiers=[

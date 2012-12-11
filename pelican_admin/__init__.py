@@ -6,7 +6,7 @@ from django.conf import settings, urls
 
 from pelican_admin.helper import get_pelican_settings_file
 
-import django, os, psutil, signal, atexit
+import django, os, signal, atexit
 
 def pelican_urls():
     """Helper function to return a URL pattern for serving pelican_admin webservices.
@@ -21,6 +21,7 @@ def pelican_urls():
 def _kill_pelican_service():
     print 'Killing pelican services'
 
+    import psutil
     for p in psutil.process_iter():
         try:
             if "pelican" in str(p.cmdline).lower():
@@ -38,6 +39,8 @@ def _start_pelican_service():
 
 def _check_pelican_service():
     status = False
+
+    import psutil
     for p in psutil.process_iter():
         try:
             if "pelican" in str(p.cmdline).lower():
