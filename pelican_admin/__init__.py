@@ -12,7 +12,7 @@ def pelican_urls():
     """
 
     return (
-        urls.url(r'^admin/pelican_admin/', urls.include('pelican_admin.urls')),
+        urls.url(r'^admin/pelican/', urls.include('pelican_admin.urls')),
         urls.url(r'^admin/jsi18n.js$', 'django.views.i18n.javascript_catalog', {'packages': 'pelican_admin'}),
         urls.url(r'^admin/pelican_blog/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PELICAN_PATH, 'output')}),
     )
