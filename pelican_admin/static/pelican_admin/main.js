@@ -35,7 +35,7 @@ window.onload = function() {
         $('#pelican_loading').show();
 
         $.ajax({
-            url: '/admin/pelican?status='+status,
+            url: '/admin/pelican/service?status='+status,
             dataType: 'jsonp',
             crossDomain: false,
             jsonp: false,

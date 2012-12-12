@@ -64,7 +64,7 @@ def view_draft(request):
 from django.conf.urls import patterns, url
 
 urls = (
-    url(r'^$', 'pelican_admin.urls.service_action'),
+    url(r'^service$', 'pelican_admin.urls.service_action'),
     url(r'view_draft$', 'pelican_admin.urls.view_draft'),
 )
 
