@@ -5,6 +5,8 @@ from django.conf import settings, urls
 
 from pelican_admin.helper import get_pelican_settings_file
 
+from pelican import settings as ps
+
 import django, os, signal, atexit
 
 def pelican_urls():
@@ -15,6 +17,7 @@ def pelican_urls():
         urls.url(r'^admin/pelican/', urls.include('pelican_admin.urls')),
         urls.url(r'^admin/jsi18n.js$', 'django.views.i18n.javascript_catalog', {'packages': 'pelican_admin'}),
         urls.url(r'^admin/pelican_blog/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PELICAN_PATH, 'output')}),
+        urls.url('^admin/markdown/', urls.include( 'django_markdown.urls')),
     )
 
 def _kill_pelican_service():
@@ -57,6 +60,9 @@ try:
 
     if settings.PELICAN_PATH:
         settings.LOCALE_PATHS = settings.LOCALE_PATHS + ('pelican_admin.locale',)
+        settings.INSTALLED_APPS = settings.INSTALLED_APPS + ('django_markdown','django.contrib.markup')
+
+        settings.DJANGO_MARKDOWN_STYLE = '/admin/pelican_blog/theme/' + ps._DEFAULT_CONFIG['CSS_FILE']
 
         Settings.load_from_path()
         BlogPost.load_posts()

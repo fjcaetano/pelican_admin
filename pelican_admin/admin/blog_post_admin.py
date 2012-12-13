@@ -4,6 +4,15 @@ from pelican_admin.models.blog_post import BlogPost
 
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
+from django import forms
+
+from django_markdown.widgets import MarkdownWidget
+
+class BlogPostForm(forms.ModelForm):
+    text = forms.CharField(widget=MarkdownWidget())
+
+    class Meta:
+        model = BlogPost
 
 class BlogPostAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -21,6 +30,7 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_filter = ('category', 'status',)
     search_fields = ('title', 'text', 'tags', 'category__name')
     date_hierarchy = 'date'
+    form = BlogPostForm
 
     def get_readonly_fields(self, request, obj=None):
         return ['file_path']
