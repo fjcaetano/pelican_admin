@@ -57,7 +57,6 @@ try:
 
     if settings.PELICAN_PATH:
         settings.LOCALE_PATHS = settings.LOCALE_PATHS + ('pelican_admin.locale',)
-        settings.INSTALLED_APPs = settings.INSTALLED_APPS + ('djangotoolbox',)
 
         Settings.load_from_path()
         BlogPost.load_posts()
