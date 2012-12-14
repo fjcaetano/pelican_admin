@@ -18,6 +18,7 @@ setup(
         "psutil >= 0.6.1",
         "Django >= 1.4",
         "pelican >= 3.0",
+        "django_markdown >= 0.1.0",
     ],
     include_package_data=True,
     classifiers=[
