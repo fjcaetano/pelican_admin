@@ -25,7 +25,7 @@ def _pelican_setting(name):
     try:
         return Settings.objects.get(name=name).value
     except Settings.DoesNotExist:
-        return None
+        return ''
 
 class BlogPost(models.Model):
     title = models.CharField(_('Title'), max_length=255)
