@@ -53,6 +53,7 @@ try:
         settings.LOCALE_PATHS += ('pelican_admin.locale',)
         settings.INSTALLED_APPS += ('django_markdown','django.contrib.markup', 'pelican',)
 
+        settings.MARKDOWN_EDITOR_SKIN = getattr(settings, 'MARKDOWN_EDITOR_SKIN', 'simple')
         settings.DJANGO_MARKDOWN_STYLE = '/admin/pelican_blog/theme/' + ps._DEFAULT_CONFIG['CSS_FILE']
 
         Settings.load_from_path()
