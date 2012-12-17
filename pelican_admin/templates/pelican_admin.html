@@ -12,6 +12,9 @@
 
                     <ul>
                         <li>
+                            <a href="{{ module.blog_url }}" target="_blank">{{ _('Go to Blog') }}</a>
+                        </li>
+                        <li>
                             <input id="pelican_admin" type="button" status="{{ module.pelican_status|yesno:"1,0" }}" value="{{ module.pelican_status|yesno:_("Stop,Start")|add:" "|add:_("Service") }}" />
                             <img id="pelican_loading" src="{{ STATIC_URL }}pelican_admin/loading.gif" alt="{{ _("Loading") }}" style="display: none; margin-right: 20px;" />
                         </li>

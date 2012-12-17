@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-10 10:17-0200\n"
+"POT-Creation-Date: 2012-12-17 19:19-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: actions.py:48
-#, python-format
-msgid "Successfully deleted %(count)d %(items)s."
-msgstr ""
-
-#: actions.py:60
-#, python-format
-msgid "Cannot delete %(name)s"
-msgstr ""
-
-#: actions.py:62
-msgid "Are you sure?"
-msgstr ""
-
-#: actions.py:84
-#, python-format
-msgid "Delete selected %(verbose_name_plural)s"
-msgstr ""
-
-#: dashboard.py:33 menu.py:37
-msgid "Applications"
-msgstr ""
-
-#: dashboard.py:39 menu.py:41
-msgid "Administration"
-msgstr ""
-
-#: dashboard.py:44 dashboard.py:86
-msgid "Recent Actions"
-msgstr ""
-
-#: menu.py:34
-msgid "Dashboard"
-msgstr ""
-
-#: books/admin/friend.py:30
-msgid "(None)"
-msgstr ""
-
-#: pelican_admin/admin/blog_post_admin.py:13
+#: pelican_admin/admin/blog_post_admin.py:22
 msgid "Extra Info"
 msgstr ""
 
@@ -117,15 +78,15 @@ msgstr ""
 msgid "File Path"
 msgstr ""
 
-#: pelican_admin/models/blog_post.py:162
+#: pelican_admin/models/blog_post.py:198
 msgid "Blog Post"
 msgstr ""
 
-#: pelican_admin/models/blog_post.py:163
+#: pelican_admin/models/blog_post.py:199
 msgid "Blog Posts"
 msgstr ""
 
-#: pelican_admin/models/category.py:7 pelican_admin/models/settings.py:16
+#: pelican_admin/models/category.py:7 pelican_admin/models/settings.py:15
 msgid "Name"
 msgstr ""
 
@@ -137,15 +98,15 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: pelican_admin/models/settings.py:18
+#: pelican_admin/models/settings.py:17
 msgid "Value"
 msgstr ""
 
-#: pelican_admin/models/settings.py:83
+#: pelican_admin/models/settings.py:78
 msgid "Setting"
 msgstr ""
 
-#: pelican_admin/models/settings.py:84
+#: pelican_admin/models/settings.py:79
 msgid "Settings"
 msgstr ""
 
@@ -154,42 +115,41 @@ msgid "Running,Stopped"
 msgstr ""
 
 #: pelican_admin/templates/pelican_admin.html:15
+msgid "Go to Blog"
+msgstr ""
+
+#: pelican_admin/templates/pelican_admin.html:18
 msgid "Stop,Start"
 msgstr ""
 
-#: pelican_admin/templates/pelican_admin.html:15
+#: pelican_admin/templates/pelican_admin.html:18
 msgid "Service"
 msgstr ""
 
-#: pelican_admin/templates/pelican_admin.html:16
+#: pelican_admin/templates/pelican_admin.html:19
 msgid "Loading"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:17
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:28
 msgid "Save"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:18
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:30
 msgid "Delete"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:19
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:32
 msgid "Save as new"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:20
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:34
 msgid "Save and add another"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:21
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:36
 msgid "Save and continue editing"
 msgstr ""
 
-#: pelican_admin/templates/admin/submit_line.html:22
+#: pelican_admin/templates/admin/pelican_admin/blogpost/change_form.html:37
 msgid "View Draft"
-msgstr ""
-
-#: templates/filter.html:2
-#, python-format
-msgid " By %(filter_title)s "
 msgstr ""
