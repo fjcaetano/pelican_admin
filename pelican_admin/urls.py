@@ -22,7 +22,7 @@ def service_action(request):
         # Start pelican
         _start_pelican_service()
 
-    time.sleep(2)
+    time.sleep(1)
 
     new_status = int(_check_pelican_service())
 

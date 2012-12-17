@@ -1,9 +1,8 @@
 __author__ = 'flaviocaetano'
 
-from django.utils.translation import ugettext_lazy as _
 from admin_tools.dashboard import modules
 
-import psutil
+from . import _check_pelican_service
 
 class PelicanAdmin(modules.DashboardModule):
     """Dashboard module for Pelican service administration.
@@ -15,15 +14,7 @@ class PelicanAdmin(modules.DashboardModule):
 
     def __init__(self, *args, **kwargs):
         super(PelicanAdmin, self).__init__(*args, **kwargs)
-        self.pelican_status = False
-
-        for p in psutil.process_iter():
-            try:
-                if "pelican" in str(p.cmdline).lower():
-                    self.pelican_status = True
-                    break
-            except psutil.AccessDenied, e:
-                pass
+        self.pelican_status = _check_pelican_service()
 
     def is_empty(self):
         return False

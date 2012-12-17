@@ -5,7 +5,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.utils import simplejson
 
-import os, sys, pprint, unicodedata, ast
+import os, sys, pprint, unicodedata, ast, importlib
 
 from pelican_admin.helper import get_pelican_settings_file
 
@@ -46,10 +46,8 @@ class Settings(models.Model):
 
         pelican_settings_name = get_pelican_settings_file()
 
-        sys.path.append(settings.PELICAN_PATH)
-        pelican_settings = None
-
-        exec 'import %s; pelican_settings = %s' % (pelican_settings_name, pelican_settings_name) in None
+        pelican_settings = importlib.import_module(pelican_settings_name)
+        reload(pelican_settings)
 
         attr_list = dir(pelican_settings)
         user_settings = dict((attr, getattr(pelican_settings, attr)) for attr in attr_list if not attr.startswith('__'))
@@ -59,6 +57,8 @@ class Settings(models.Model):
         settings_list = []
 
         for attr, def_value in default.items():
+            if not attr.isupper(): continue
+
             if isinstance(def_value, str):
                 attr_value = def_value
             elif isinstance(def_value, unicode):

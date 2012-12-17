@@ -3,11 +3,11 @@ __VERSION__ = 0.3
 
 from django.conf import settings, urls
 
-from pelican_admin.helper import get_pelican_settings_file
+from pelican_admin.helper import get_pelican_settings_file, KThread
 
-from pelican import settings as ps
+from pelican import main as pelican_main,  settings as ps
 
-import django, os, signal, atexit
+import django, os, sys, atexit, threading
 
 def pelican_urls():
     """Helper function to return a URL pattern for serving pelican_admin webservices.
@@ -21,35 +21,24 @@ def pelican_urls():
     )
 
 def _kill_pelican_service():
-    print 'Killing pelican services'
-
-    import psutil
-    for p in psutil.process_iter():
-        try:
-            if "pelican" in str(p.cmdline).lower():
-                os.kill(p.pid, signal.SIGKILL)
-        except psutil.AccessDenied, e:
-            pass
+    for thread in threading.enumerate():
+        if thread.name == 'pelican_thread':
+            thread.kill()
 
 def _start_pelican_service():
-    pelican_settings_name = get_pelican_settings_file()
-    pelican = getattr(settings, 'PELICAN_BIN', '/usr/local/bin/pelican')
+    def start_pelican():
+        pelican_settings_name = get_pelican_settings_file()
+        pelican_settings_path = os.path.join(settings.PELICAN_PATH, pelican_settings_name+'.py')
 
-    cmdline = pelican+' -s %s.py -r &' % pelican_settings_name
-    os.chdir(settings.PELICAN_PATH)
-    os.system(cmdline)
+        pelican_main(settings.PELICAN_PATH, settings=pelican_settings_path, autoreload=True)
+
+    if not _check_pelican_service():
+        thread = KThread(target=start_pelican, name='pelican_thread')
+        thread.setDaemon(True)
+        thread.start()
 
 def _check_pelican_service():
-    status = False
-
-    import psutil
-    for p in psutil.process_iter():
-        try:
-            if "pelican" in str(p.cmdline).lower():
-                status = True
-                break
-        except psutil.AccessDenied, e:
-            pass
+    status = 'pelican_thread' in list(thread.name for thread in threading.enumerate())
 
     return status
 
@@ -59,8 +48,10 @@ try:
     from pelican_admin.models import Settings, BlogPost
 
     if settings.PELICAN_PATH:
+        sys.path.append(settings.PELICAN_PATH)
+
         settings.LOCALE_PATHS += ('pelican_admin.locale',)
-        settings.INSTALLED_APPS += ('django_markdown','django.contrib.markup')
+        settings.INSTALLED_APPS += ('django_markdown','django.contrib.markup', 'pelican',)
 
         settings.DJANGO_MARKDOWN_STYLE = '/admin/pelican_blog/theme/' + ps._DEFAULT_CONFIG['CSS_FILE']
 
