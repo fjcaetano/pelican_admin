@@ -4,6 +4,15 @@ from setuptools import setup, find_packages
 
 import pelican_admin
 
+def parse_requirements():
+    f = open('requirements.txt', 'r')
+    requirements = f.readlines()
+    requirements.remove('pelican_admin')
+    f.close()
+
+    return requirements
+
+
 setup(
     name='pelican_admin',
     version=pelican_admin.__VERSION__,
@@ -14,12 +23,7 @@ setup(
     license='GPL - see LICENSE.txt',
     description='Django admin app for Pelican blogs.',
     long_description=open('PYREADME.md').read(),
-    install_requires=[
-        "psutil >= 0.6.1",
-        "Django >= 1.4",
-        "pelican >= 3.0",
-        "django_markdown >= 0.1.0",
-    ],
+    install_requires=parse_requirements(),
     include_package_data=True,
     classifiers=[
         'Environment :: Web Environment',
