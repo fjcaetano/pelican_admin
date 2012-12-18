@@ -8,3 +8,5 @@ install:
   - "pip install ."
 # command to run tests, e.g. python setup.py test
 script:  PLEASE CHANGE ME
+# database configuration
+services: mysql

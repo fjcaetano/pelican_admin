@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from pelican.utils import slugify
 
-from pelican_admin.models.settings import Settings
+from pelican_admin.models import Settings, Category
 
 import os, datetime, codecs
 
@@ -174,7 +174,8 @@ class BlogPost(models.Model):
                     post.tags = parse('tags')
 
                 elif line.startswith(post.metafy('category')):
-                    post.category = parse('category')
+                    category_str = parse('category')
+                    post.category = Category.objects.get_or_create(name=category_str)
 
                 elif line.startswith(post.metafy('slug')):
                     post.slug = parse('slug')
