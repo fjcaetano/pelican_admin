@@ -7,7 +7,7 @@ import pelican_admin
 def parse_requirements():
     f = open('requirements.txt', 'r')
     requirements = f.readlines()
-    requirements.remove('pelican_admin')
+    requirements.remove('pelican_admin\n')
     f.close()
 
     return requirements

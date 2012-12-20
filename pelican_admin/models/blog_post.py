@@ -175,7 +175,8 @@ class BlogPost(models.Model):
 
                 elif line.startswith(post.metafy('category')):
                     category_str = parse('category')
-                    post.category = Category.objects.get_or_create(name=category_str)
+                    category, created = Category.objects.get_or_create(name=category_str)
+                    post.category = category
 
                 elif line.startswith(post.metafy('slug')):
                     post.slug = parse('slug')
