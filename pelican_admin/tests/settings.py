@@ -1,3 +1,5 @@
+from django.conf.project_template.project_name.settings import ROOT_URLCONF
+
 __author__ = 'flaviocaetano'
 
 """A basic database set-up for Travis CI.
@@ -10,6 +12,7 @@ assign the default database to another configuration later in your code.
 """
 
 import os
+BASE_PATH = os.path.dirname(__file__)
 
 if 'TRAVIS' in os.environ:
     DATABASES = {
@@ -22,3 +25,20 @@ if 'TRAVIS' in os.environ:
             'PORT': '',
         },
     }
+
+SITE_ID = 1
+
+DEBUG = True
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'pelican_admin',
+]
+
+PELICAN_PATH = os.path.join(BASE_PATH, 'blog/')
+
+ROOT_URLCONF = 'pelican_admin.tests.urls'

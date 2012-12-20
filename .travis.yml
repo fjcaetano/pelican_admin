@@ -11,12 +11,15 @@ before_install:
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - "pip install -r requirements.txt"
-  - "pip install ."
+  - pip install .
+#  - pip install -r requirements.txt Django==$DJANGO
+  - pip install django==$DJANGO --quiet
 
 # command to run tests, e.g. python setup.py test
 script:
-  - puthon manage.py syncdb --noinput
+  - django-admin.py syncdb --noinput
+  - django-admin.py migrate pelican_admin
+  - django-admin.py test --settings=pelican_admin.tests.settings pelican_admin
 
 # database configuration
 services: mysql
