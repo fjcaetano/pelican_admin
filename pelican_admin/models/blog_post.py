@@ -24,7 +24,7 @@ STATUS = (
 def _pelican_setting(name):
     try:
         return Settings.objects.get(name=name).value
-    except Settings.DoesNotExist:
+    except Exception:
         return ''
 
 class BlogPost(models.Model):
@@ -43,7 +43,7 @@ class BlogPost(models.Model):
     lang = models.CharField(_('Language'), max_length=5, default=_pelican_setting('DEFAULT_LANG'))
     status = models.CharField(_('Status'), choices=STATUS, default='published', max_length=127)
 
-    file_path = models.CharField(_('File Path'), max_length=255, unique=True, primary_key=True)
+    file_path = models.CharField(_('File Path'), max_length=255, unique=True)
 
     def save(self, **kwargs):
         self.write()
@@ -52,7 +52,7 @@ class BlogPost(models.Model):
 
     def write(self):
         if not self.file_path:
-            filename ='%s.%s' % (self.get_slug(), MARKUPS[self.markup][1])
+            filename ='%s.%s.%s' % (self.get_slug(), self.lang, MARKUPS[self.markup][1])
             self.file_path = os.path.join(settings.PELICAN_PATH, 'content', filename)
 
         f = codecs.open(self.file_path, 'w', encoding="utf-8")
@@ -94,9 +94,10 @@ class BlogPost(models.Model):
         f.close()
 
     def delete(self, using=None):
-        os.remove(self.file_path)
-
-        super(BlogPost, self).delete(using)
+        try:
+            os.remove(self.file_path)
+        finally:
+            super(BlogPost, self).delete(using)
 
     def metafy(self, meta):
         return ':' + meta.lower() if self.markup == 0 else meta.title()

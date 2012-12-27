@@ -3,7 +3,7 @@ __author__ = 'Flavio'
 from pelican_admin.models.blog_post import BlogPost
 
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import admin
+from django.contrib import admin, messages
 from django import forms
 
 from django_markdown.widgets import MarkdownWidget
@@ -34,5 +34,11 @@ class BlogPostAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         return ['file_path']
+
+    def delete_model(self, request, obj):
+        try:
+            obj.delete()
+        except OSError, e:
+            messages.error(request, e.strerror)
 
 admin.site.register(BlogPost, BlogPostAdmin)

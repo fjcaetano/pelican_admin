@@ -13,12 +13,12 @@ class SettingsAdmin(admin.ModelAdmin):
     actions = None
 
     def get_readonly_fields(self, request, obj=None):
-        return ['name']
+        if obj:
+            return ['name']
+
+        return []
 
     def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_add_permission(self, request):
         return False
 
 admin.site.register(Settings, SettingsAdmin)
