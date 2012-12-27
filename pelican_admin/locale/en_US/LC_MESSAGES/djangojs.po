@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# English (US) translations for pelican_admin.
+# Copyright Flávio Caetano © 2012
+# This file is distributed under the same license as the pelican_admin project.
+# Flávio Caetano <flavio@vieiracaetano.com>, 2012.
 #
 
 msgid ""

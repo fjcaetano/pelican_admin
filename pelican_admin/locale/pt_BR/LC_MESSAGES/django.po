@@ -1,12 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Portuguese (Brazil) translations for pelican_admin.
+# Copyright Flávio Caetano © 2012
+# This file is distributed under the same license as the pelican_admin project.
+# Flávio Caetano <flavio@vieiracaetano.com>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-17 19:20-0200\n"
+"POT-Creation-Date: 2012-12-27 17:27-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
+#: pelican_admin/admin/blog_post_admin.py:20
+#, python-format
+msgid "%(count)s blog post marked as %(status)s"
+msgstr "%(count)s postagem do blog marcada como %(status)s"
+
 #: pelican_admin/admin/blog_post_admin.py:22
+#, python-format
+msgid "%(count)s blog posts marked as %(status)s"
+msgstr "%(count)s postagens do blog marcadas como %(status)s"
+
+#: pelican_admin/admin/blog_post_admin.py:24
+#, python-format
+msgid "Save all as %s"
+msgstr "Salvar todos como '%s'"
+
+#: pelican_admin/admin/blog_post_admin.py:38
 msgid "Extra Info"
 msgstr "Informações Adicionais"
 
@@ -77,11 +93,11 @@ msgstr "Status"
 msgid "File Path"
 msgstr "Caminho do Arquivo"
 
-#: pelican_admin/models/blog_post.py:198
+#: pelican_admin/models/blog_post.py:201
 msgid "Blog Post"
 msgstr "Postagem do Blog"
 
-#: pelican_admin/models/blog_post.py:199
+#: pelican_admin/models/blog_post.py:202
 msgid "Blog Posts"
 msgstr "Postagens do Blog"
 

@@ -10,12 +10,18 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         try:
+            self.stdout.write('Starting import of pelican blog\n')
             from pelican_admin.models import Settings, BlogPost
 
             if settings.PELICAN_PATH:
+                self.stdout.write('Importing settings\n')
                 Settings.load_from_path()
+
+                self.stdout.write('Importing blog posts\n')
                 BlogPost.load_posts()
+
+            self.stdout.write('Finished importing pelican blog\n')
         except ImportError, e:
-            self.stderr(e)
+            self.stderr.write(e)
         except DatabaseError, e:
-            self.stderr(e)
+            self.stderr.write(e)
