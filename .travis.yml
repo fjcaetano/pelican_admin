@@ -1,0 +1,28 @@
+language: python
+
+python:
+  - "2.7"
+  - "2.6"
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=pelican_admin.settings
+  - export PYTHONPATH=$HOME/builds/fjcaetano/pelican_admin
+  - export PIP_USE_MIRRORS=true
+
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install:
+  - pip install .
+#  - pip install -r requirements.txt Django==$DJANGO
+  - pip install django==$DJANGO --quiet
+
+# command to run tests, e.g. python setup.py test
+script:
+  - django-admin.py syncdb --noinput
+  - django-admin.py migrate pelican_admin
+  - django-admin.py test --settings=pelican_admin.tests.settings pelican_admin
+
+# database configuration
+services: mysql
+
+before_script:
+  - mysql -e 'create database pelican_admin_test;'
