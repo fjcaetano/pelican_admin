@@ -1,7 +1,7 @@
 pelican_admin
 =============
-[![PyPi version](https://pypip.in/v/pelican_admin/badge.png)](https://crate.io/packages/$REPO/)
-[![PyPi downloads](https://pypip.in/d/pelican_admin/badge.png)](https://crate.io/packages/$REPO/)
+[![PyPi version](https://pypip.in/v/pelican_admin/badge.png)](https://crate.io/packages/pelican_admin/)
+[![PyPi downloads](https://pypip.in/d/pelican_admin/badge.png)](https://crate.io/packages/pelican_admin/)
 
 *pelican_admin* was developed to assist you manage your [Pelican] blog.
 
