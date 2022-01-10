@@ -137,7 +137,7 @@ When you migrate, whether installing from pip or cloning the repository, do not 
 
 Contact
 ==============
-If you have any comments, ideas questions, feedback, etcetera, email me and we'll be in touch. I'm <flavio@vieiracaetano.com>
+If you have any comments, ideas questions, feedback, etcetera, email me and we'll be in touch. Find me at <pelican_admin@flaviocaetano.com>
 
 [django-admin-tools]: https://bitbucket.org/izi/django-admin-tools/wiki/Home
 [pelican]: https://github.com/getpelican/pelican
